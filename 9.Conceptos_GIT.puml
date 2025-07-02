@@ -19,3 +19,32 @@ state Repository as "Repositorio local (.git)" {
 Repository --> Working_Directory : git checkout (restaurar versión anterior)
 
 @enduml
+
+@startuml
+title Flujo de trabajo básico en Git
+
+start
+:Modificar archivos en el
+Working Directory;
+:¿Listo para guardar cambios en staging?;
+if (Sí) then (Sí)
+  :git add <archivo>\n(o git add .);
+  :Archivo(s) pasan al Staging Area;
+else (No)
+  :Seguir editando archivos;
+endif
+:¿Listo para confirmar cambios?;
+if (Sí) then (Sí)
+  :git commit -m "Mensaje";
+  :Commit creado en el repositorio local (HEAD);
+  :Working Directory y Staging Area sincronizados;
+else (No)
+  :Puedes seguir editando o añadir más archivos;
+endif
+:¿Hay más cambios por hacer?;
+if (Sí) then (Sí)
+  :Repetir el ciclo;
+else (No)
+  stop
+endif
+@enduml

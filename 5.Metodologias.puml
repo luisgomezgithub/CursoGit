@@ -1,0 +1,89 @@
+@startmindmap
+* Metodologías de desarrollo software
+** Tradicionales (formales/pesadas)
+*** Ejemplos: SSADM, Merise, Métrica v3
+** Orientadas a objetos
+*** Ejemplos: OMT, OOAD, OOSE, RUP/PUS
+**** RUP/PUS: 4 fases (iniciación, elaboración, construcción, transición)
+** Ágiles
+*** Ejemplos: Scrum, Kanban, XP, FDD, DDD
+**** Scrum
+***** Roles: Product Owner, Scrum Master, Scrum Team, Developers
+***** Reuniones: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective
+***** Sprint: iteración de 2-4 semanas, backlog
+**** Kanban: flujo continuo, tablero To-Do/Doing/Done, JIT, detecta cuellos de botella
+**** XP: énfasis en adaptabilidad, historias de usuario, desarrollo iterativo
+** RAD (Rapid Application Development)
+*** Desarrollo rápido de aplicaciones
+@endmindmap
+
+@startuml
+skinparam class {
+    BackgroundColor<<trad>> #f9e79f
+    BackgroundColor<<oo>> #aed6f1
+    BackgroundColor<<agil>> #a9dfbf
+    BackgroundColor<<rad>> #f5b7b1
+    BorderColor Black
+}
+
+class "Metodologías de desarrollo software" as MDS
+
+class "Tradicionales" <<trad>> {
+    Ejemplos: SSADM, Merise, Métrica v3
+    Foco: planificación, documentación, procesos
+}
+class "Orientadas a objetos" <<oo>> {
+    Ejemplos: OMT, OOAD, OOSE, RUP/PUS
+    Foco: modelado con objetos
+    --
+    RUP/PUS: 4 fases (iniciación, elaboración, construcción, transición)
+}
+class "Ágiles" <<agil>> {
+    Ejemplos: Scrum, Kanban, XP, FDD, DDD
+    Foco: incremental, adaptabilidad, colaboración
+}
+class "RAD" <<rad>> {
+    Desarrollo rápido de aplicaciones
+}
+
+class "Scrum" <<agil>> {
+    Roles: Product Owner, Scrum Master, Scrum Team, Developers
+    Reuniones: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective
+    Sprint: iteración 2-4 semanas, backlog
+}
+class "Kanban" <<agil>> {
+    Flujo continuo, tablero To-Do/Doing/Done, JIT
+}
+class "XP" <<agil>> {
+    Adaptabilidad, historias de usuario, desarrollo iterativo
+}
+
+MDS -- Tradicionales
+MDS -- "Orientadas a objetos"
+MDS -- Ágiles
+MDS -- RAD
+Ágiles -- Scrum
+Ágiles -- Kanban
+Ágiles -- XP
+
+legend left
+Tradicionales: Basadas en fuerte planificación, documentación y procesos.
+RAD: Metodología orientada a entregar sistemas muy rápido.
+RUP/PUS: Proceso unificado en 4 fases: iniciación, elaboración, construcción, transición.
+
+Scrum: Metodología ágil con roles (Product Owner, Scrum Master, Equipo), iteraciones (sprints) y reuniones clave.
+
+Scrum: Metodología ágil con roles y eventos iterativos.
+  - Product Owner: Voz del cliente, prioriza funcionalidades.
+  - Scrum Master: Facilita Scrum, protege al equipo.
+  - Scrum Team: Construye el producto, multifuncional y autoorganizado. Tamaño pequeño (de 5 a 9 personas).
+  - Developers: Implementan y entregan incrementos de producto.
+
+ Sprint: Iteración de 2-4 semanas donde se desarrolla un incremento de software operativo.
+  - Backlog: Lista priorizada de requisitos y tareas pendientes; de aquí se seleccionan los ítems para cada sprint.
+  
+Kanban: Flujo continuo, tablero visual (To-Do, Doing, Done), principio JIT.
+XP: Énfasis en adaptabilidad, historias de usuario, desarrollo iterativo y cambios frecuentes.
+endlegend
+@enduml
+

@@ -1,0 +1,88 @@
+@startmindmap
+* Herramientas para el desarrollo software
+** IDEs
+*** Eclipse
+**** Java (principal), C/C++, PHP, Python
+*** IntelliJ IDEA
+**** Java (principal), Kotlin, Groovy, Scala, JavaScript
+*** NetBeans
+**** Java (principal), PHP, C/C++, JavaScript
+*** Visual Studio
+**** C#, .NET, C++, F#, Python, JavaScript
+*** Xcode
+**** Swift (principal), Objective-C, C, C++
+*** Android Studio
+**** Java, Kotlin (principal)
+** Control de versiones
+*** Git, GitHub, GitLab
+*** Bitbucket, FishEye
+** Análisis estático de código
+*** Linters
+****_ Detectan errores de sintaxis, violaciones de estilo y posibles problemas como variables no utilizadas.
+**** PMD (Java, JS, Kotlin, Swift…)
+*** Análisis de flujo de datos
+****_ Detectar variables no inicializadas, condiciones de carrera y otros problemas
+*** Analizadores de seguridad (SAST)
+**** Inyección SQL, XSS…
+*** Análisis de librerías de terceros (SCA)
+**** Black Duck, VeraCode SCA, Snyk, Sonatype, WhiteSource, Retire.js, OWASP Dependency-Check
+*** Análisis de calidad de código
+**** SonarQube
+@endmindmap
+
+@startmindmap
+* Herramientas para el desarrollo software
+** Herramientas de construcción (Build)
+*** Maven (Java)
+*** Gradle (Java, Kotlin, Groovy)
+*** Ant (Java)
+** Herramientas de testing
+*** Unitarios: XUnit, JUnit, Unit.js
+*** Web: Selenium (automatización UI)
+*** Movil: Appium
+*** Servicios web: SoapUI y Postman (RESTful).
+** Herramientas de empaquetado
+*** Repositorio de artefactos: Nexus 3, Artifactory
+*** JAR/WAR (Java)
+*** NuGet (.NET)
+@endmindmap
+
+
+@startmindmap
+* Herramientas para el desarrollo software
+** Gestión de la configuración
+*** Ansible, Puppet, Chef, SaltStack, Jenkins
+** Despliegue
+*** Docker, Kubernetes, Jenkins, GitLab CI/CD, AWS CodeDeploy, Azure DevOps
+*** DAST: OWASP ZAP, Burp Suite, Acunetix, Netsparker, AppScan, WebInspect
+** Monitorización
+*** Rendimiento: Zabbix, Nagios, InfluxDB, Telegraf, Splunk, Prometheus, Grafana
+*** Logs: Elasticsearch, Logstash, Kibana (ELK)
+*** Analíticas web: Piwik PRO, Google Web Analytics
+@endmindmap
+
+@startmindmap
+* Sistema de integración continua (CI)
+** Push a master en Git
+** Jenkins detecta cambios
+** Compila la aplicación
+** Analiza calidad del código (SonarQube)
+** Ejecuta tests unitarios y de integración
+** Publica artefactos en Nexus
+@endmindmap
+
+
+@startuml
+start
+:Push a master en Git;
+:Jenkins detecta el cambio;
+:Compila la aplicación;
+:Analiza calidad del código (SonarQube);
+:Ejecuta tests unitarios y de integración;
+if (¿Tests OK?) then (Sí)
+  :Publica artefactos en Nexus;
+else (No)
+  :Notifica error al equipo;
+endif
+stop
+@enduml

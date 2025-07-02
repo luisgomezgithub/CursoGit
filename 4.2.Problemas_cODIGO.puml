@@ -1,0 +1,173 @@
+@startuml
+skinparam class {
+    BackgroundColor<<espagueti>> #f8c471
+    BackgroundColor<<ravioli>> #aed6f1
+    BackgroundColor<<lasaña>> #d2b4de
+    BackgroundColor<<pizza>> #f9e79f
+    BackgroundColor<<overeng>> #f5b7b1
+    BackgroundColor<<poa>> #a9dfbf
+    BackgroundColor<<smell>> #f7cac9
+    BorderColor Black
+}
+
+class "Código espagueti" <<espagueti>> {
+    - Estructuras de control de flujo complejas
+    - Difícil de mantener y entender
+}
+
+class "Código ravioli" <<ravioli>> {
+    - Muchas clases simples
+    - Complejidad global por interacciones
+}
+
+class "Código lasaña" <<lasaña>> {
+    - Muchas capas interconectadas
+    - Cambios en una capa afectan a otras
+}
+
+class "Código pizza" <<pizza>> {
+    - Arquitectura plana
+}
+
+class "Overengineering" <<overeng>> {
+    - Código más complicado de lo necesario
+    - Exceso de funcionalidad, seguridad, rendimiento
+}
+
+class "Problemas POA" <<poa>> {
+    - Scattered code: código disperso
+    - Tangled code: código enmarañado
+}
+
+class "Code smell" <<smell>> {
+    - Código mal diseñado, candidato a refactorización
+    --
+    - Código duplicado
+    - Clases/métodos grandes
+    - Clases con poca funcionalidad (lazy)
+    - Métodos con muchos parámetros
+    - Complejidad por mal uso de patrones
+}
+
+note right of "Code smell"
+Herramienta: SonarQube ayuda a detectar estos problemas.
+end note
+
+' Relaciones lógicas (no estrictamente UML, pero útiles para recordar)
+"Problemas POA" -[#green,dashed]-> "Code smell" : Puede causar
+"Overengineering" -[#red,dashed]-> "Code smell" : Puede causar
+
+@enduml
+
+@startuml
+skinparam class {
+    BackgroundColor<<solid>> #a8d08d
+    BackgroundColor<<patrones>> #8dd1c9
+    BackgroundColor<<estandares>> #9cc4e4
+    BackgroundColor<<documentacion>> #b3c6e7
+    BackgroundColor<<analisis>> #c5e0b4
+    BorderColor Black
+}
+
+class "Principios SOLID" <<solid>> {
+    - S: Responsabilidad única
+    - O: Abierto/cerrado
+    - L: Sustitución de Liskov
+    - I: Segregación de interfaces
+    - D: Inversión de dependencias
+}
+
+class "Patrones de diseño" <<patrones>> {
+    - Creacionales
+    - Estructurales
+    - Comportamiento
+}
+
+class "Estándares y convenciones" <<estandares>> {
+    - Nomenclatura consistente
+    - Guías de estilo
+    - Formateo de código
+}
+
+class "Documentación del código" <<documentacion>> {
+    - Comentarios descriptivos
+    - Documentación API
+    - Javadoc/JSDoc/etc.
+}
+
+class "Análisis estático de calidad" <<analisis>> {
+    - SonarQube
+    - Métricas de calidad
+    - Detección temprana
+}
+
+note right of "Principios SOLID"
+Los principios SOLID son fundamentales
+para crear código mantenible y extensible
+end note
+
+note bottom of "Análisis estático de calidad"
+SonarQube permite detectar code smells
+y problemas de calidad de forma automatizada
+end note
+
+@enduml
+
+@startuml
+skinparam class {
+    BackgroundColor<<solid>> #a8d08d
+    BackgroundColor<<patrones>> #8dd1c9
+    BackgroundColor<<estandares>> #9cc4e4
+    BackgroundColor<<documentacion>> #b3c6e7
+    BackgroundColor<<analisis>> #c5e0b4
+    BorderColor Black
+}
+
+class "Principios SOLID" <<solid>> {
+    - S: Responsabilidad única
+    - O: Abierto/cerrado
+    - L: Sustitución de Liskov
+    - I: Segregación de interfaces
+    - D: Inversión de dependencias
+}
+
+class "Patrones de diseño" <<patrones>> {
+    - Creacionales
+    - Estructurales
+    - Comportamiento
+}
+class "Estándares y convenciones" <<estandares>> {
+    - Nomenclatura consistente
+    - Guías de estilo
+    - Formateo de código
+}
+class "Documentación del código" <<documentacion>> {
+    - Comentarios descriptivos
+    - Documentación API
+    - Javadoc/JSDoc/etc.
+}
+class "Análisis estático de calidad" <<analisis>> {
+    - SonarQube
+    - Métricas de calidad
+    - Detección temprana
+}
+
+note right of "Principios SOLID"
+Los principios SOLID son buenas prácticas para crear
+código mantenible, flexible y escalable.
+end note
+
+note bottom of "Análisis estático de calidad"
+SonarQube permite detectar code smells
+y problemas de calidad de forma automatizada.
+end note
+
+legend left
+Principios SOLID:
+S (Single Responsibility): Una clase debe tener una única razón para cambiar.
+O (Open/Closed): Abierto para extensión, cerrado para modificación.
+L (Liskov Substitution): Las subclases deben poder sustituir a la clase base sin alterar el sistema.
+I (Interface Segregation): Mejor muchas interfaces pequeñas que una grande.
+D (Dependency Inversion): Depender de abstracciones, no de implementaciones.
+endlegend
+@enduml

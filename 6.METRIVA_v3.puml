@@ -1,0 +1,145 @@
+@startwbs scale=2.5
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 28
+
+* Métrica v3
+** Planificación de Sistemas de Información (PSI)
+*** Marco estratégico, arquitectura de información, plan de proyectos
+** Desarrollo de Sistemas de Información
+*** Estudio de Viabilidad del Sistema (EVS): análisis de necesidades y viabilidad
+*** Análisis del Sistema de Información (ASI): especificación detallada y modelos
+*** Diseño del Sistema de Información (DSI): arquitectura, especificaciones técnicas, plan de pruebas
+*** Construcción del Sistema de Información (CSI): construcción, pruebas, manuales
+*** Implantación y Aceptación del Sistema (IAS): instalación, formación, aceptación
+** Mantenimiento de Sistemas de Información (MSI)
+*** Correctivo
+*** Evolutivo
+** Interfaces organizativas y de soporte
+*** Gestión de Proyectos (GP): planificación, seguimiento y control
+*** Seguridad (SEG): gestión de riesgos lógicos
+*** Gestión de la Configuración (GC): control de cambios y versiones
+*** Aseguramiento de la Calidad (CAL): garantía de calidad
+@endwbs
+
+@startuml
+skinparam class {
+    BackgroundColor<<proceso>> #aed6f1
+    BackgroundColor<<interfaz>> #f9e79f
+    BorderColor Black
+}
+
+class "Métrica v3" as Met
+
+class "Planificación de Sistemas de Información (PSI)" <<proceso>> {
+    Marco estratégico, arquitectura de información, plan de proyectos
+}
+class "Desarrollo de Sistemas de Información" <<proceso>>
+class "Mantenimiento de Sistemas de Información (MSI)" <<proceso>> {
+    - Correctivo
+    - Evolutivo
+}
+
+class "Estudio de Viabilidad del Sistema (EVS)" <<proceso>>
+class "Análisis del Sistema de Información (ASI)" <<proceso>>
+class "Diseño del Sistema de Información (DSI)" <<proceso>>
+class "Construcción del Sistema de Información (CSI)" <<proceso>>
+class "Implantación y Aceptación del Sistema (IAS)" <<proceso>>
+
+class "Gestión de Proyectos (GP)" <<interfaz>> {
+    Planificación, seguimiento y control
+}
+class "Seguridad (SEG)" <<interfaz>> {
+    Gestión de riesgos lógicos
+}
+class "Gestión de la Configuración (GC)" <<interfaz>> {
+    Control de cambios y versiones
+}
+class "Aseguramiento de la Calidad (CAL)" <<interfaz>> {
+    Garantía de calidad
+}
+
+Met -- "Planificación de Sistemas de Información (PSI)"
+Met -- "Desarrollo de Sistemas de Información"
+Met -- "Mantenimiento de Sistemas de Información (MSI)"
+Met .. "Gestión de Proyectos (GP)"
+Met .. "Seguridad (SEG)"
+Met .. "Gestión de la Configuración (GC)"
+Met .. "Aseguramiento de la Calidad (CAL)"
+
+"Desarrollo de Sistemas de Información" -- "Estudio de Viabilidad del Sistema (EVS)"
+"Desarrollo de Sistemas de Información" -- "Análisis del Sistema de Información (ASI)"
+"Desarrollo de Sistemas de Información" -- "Diseño del Sistema de Información (DSI)"
+"Desarrollo de Sistemas de Información" -- "Construcción del Sistema de Información (CSI)"
+"Desarrollo de Sistemas de Información" -- "Implantación y Aceptación del Sistema (IAS)"
+
+@enduml
+
+@startuml
+skinparam class {
+    BackgroundColor<<proceso>> #aed6f1
+    BackgroundColor<<interfaz>> #f9e79f
+    BorderColor Black
+}
+
+'----------------------
+' Procesos principales
+'----------------------
+class "Métrica v3" as Met
+
+class "Planificación de Sistemas de Información (PSI)" <<proceso>> {
+    Marco estratégico, arquitectura de información, plan de proyectos
+}
+class "Desarrollo de Sistemas de Información" <<proceso>>
+class "Mantenimiento de Sistemas de Información (MSI)" <<proceso>> {
+    - Correctivo
+    - Evolutivo
+}
+
+class "Estudio de Viabilidad del Sistema (EVS)" <<proceso>>
+class "Análisis del Sistema de Información (ASI)" <<proceso>>
+class "Diseño del Sistema de Información (DSI)" <<proceso>>
+class "Construcción del Sistema de Información (CSI)" <<proceso>>
+class "Implantación y Aceptación del Sistema (IAS)" <<proceso>>
+
+Met -- "Planificación de Sistemas de Información (PSI)"
+Met -- "Desarrollo de Sistemas de Información"
+Met -- "Mantenimiento de Sistemas de Información (MSI)"
+
+"Desarrollo de Sistemas de Información" -- "Estudio de Viabilidad del Sistema (EVS)"
+"Desarrollo de Sistemas de Información" -- "Análisis del Sistema de Información (ASI)"
+"Desarrollo de Sistemas de Información" -- "Diseño del Sistema de Información (DSI)"
+"Desarrollo de Sistemas de Información" -- "Construcción del Sistema de Información (CSI)"
+"Desarrollo de Sistemas de Información" -- "Implantación y Aceptación del Sistema (IAS)"
+@enduml
+
+@startuml
+skinparam class {
+    BackgroundColor<<proceso>> #aed6f1
+    BackgroundColor<<interfaz>> #f9e79f
+    BorderColor Black
+}
+'----------------------
+' Interfaces organizativas
+'----------------------
+class "Métrica v3" as Met
+
+class "Gestión de Proyectos (GP)" <<interfaz>> {
+    Planificación, seguimiento y control
+}
+class "Seguridad (SEG)" <<interfaz>> {
+    Gestión de riesgos lógicos
+}
+class "Gestión de la Configuración (GC)" <<interfaz>> {
+    Control de cambios y versiones
+}
+class "Aseguramiento de la Calidad (CAL)" <<interfaz>> {
+    Garantía de calidad
+}
+
+' Relación transversal (interfaces aplican a todos los procesos)
+Met .. "Gestión de Proyectos (GP)"
+Met .. "Seguridad (SEG)"
+Met .. "Gestión de la Configuración (GC)"
+Met .. "Aseguramiento de la Calidad (CAL)"
+
+@enduml

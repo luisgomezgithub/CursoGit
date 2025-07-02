@@ -2,18 +2,18 @@
 * Herramientas CASE
 ** Definición
 *** Software que automatiza y da soporte a las actividades del proceso de desarrollo de software
-** Clasificación
-*** Upper CASE
+**[#Bisque] Clasificación
+***_ Upper CASE
 **** Planificación
-**** Análisis de requisitos
-**** Estrategia de desarrollo
-*** Middle CASE
+****_ Análisis de requisitos
+****_ Estrategia de desarrollo
+***_ Middle CASE
 **** Análisis
-**** Diseño
-*** Lower CASE
+****_ Diseño
+***_ Lower CASE
 **** Diseño detallado
-**** Implementación
-**** Pruebas
+****_ Implementación
+****_ Pruebas
 *** Integrated CASE
-**** Todas las fases del ciclo de vida
+****_ <back:lightgreen><color darkblue>Todas las fases del ciclo de vida
 @endmindmap

@@ -1,0 +1,14 @@
+@startmindmap
+* Generación de código y documentación
+** Generación automática de código
+*** UML → código fuente (clases, secuencia)
+****_ Un generador de código fuente crea automáticamente el código a partir de diagramas UML, acelerando el desarrollo.
+*** Ejemplos
+**** Altova Umodel: genera código de métodos desde diagramas de secuencia.
+****_ Visual Paradigm
+** Generación automática de documentación
+*** Javadoc: genera documentación HTML a partir de código Java.
+*** NaturalDocs: multilenguaje, escrita en C#.
+***_ SandCastle: para .NET, escrita en C#.
+*** VSdocman: integrada en Visual Studio, genera documentación para C# y VB.NET.
+@endmindmap

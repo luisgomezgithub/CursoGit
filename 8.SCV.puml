@@ -1,0 +1,46 @@
+@startuml
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 20
+skinparam classFontSize 20
+
+skinparam class {
+    BackgroundColor<<centralizada>> #f9e79f
+    BackgroundColor<<distribuida>> #aed6f1
+    BorderColor Black
+}
+
+class "Sistemas de Control de Versiones" as SCV
+
+class "Arquitectura Centralizada" <<centralizada>>{
+  + Ventajas:
+  - Mayor control con repositorio único
+  - Versiones por número secuencial
+  - Administración sencilla
+  + Ejemplos:
+  CVS
+  Subversion (SVN)
+}
+
+class "Arquitectura Distribuida" <<distribuida>>{
+  + Ventajas:
+  - Permite trabajar sin conexión
+  - Colaboración sin depender del servidor central
+  - Cada nodo tiene copia completa del repositorio
+  - Flujos de trabajo paralelos y colaboración entre equipos
+  + Ejemplos:
+  Git
+  Mercurial
+  Bazaar
+}
+
+SCV -- "Arquitectura Centralizada"
+SCV -- "Arquitectura Distribuida"
+
+legend
+Arquitectura Centralizada:
+Un único repositorio central almacena todas las versiones. El control es más estricto y la administración, más sencilla. Si el servidor central falla, el trabajo se detiene. Ejemplos: CVS, Subversion (SVN).
+
+Arquitectura Distribuida:
+Cada usuario/nodo tiene una copia completa del repositorio. Se puede trabajar sin conexión y colaborar aunque el servidor principal falle. Permite flujos de trabajo paralelos y es más flexible. Ejemplos: Git, Mercurial, Bazaar.
+end legend
+@enduml

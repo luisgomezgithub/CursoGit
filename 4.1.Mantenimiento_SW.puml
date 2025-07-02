@@ -1,0 +1,33 @@
+@startmindmap
+* Mantenimiento del software, ingeniería inversa y reingeniería
+** Tipos de mantenimiento (Métrica v3)
+*** Correctivo: corregir errores
+*** Adaptativo: cambios por entorno
+*** Evolutivo: nuevas necesidades usuario
+*** Perfectivo: mejora calidad interna
+*** Preventivo: detectar/corregir fallos latentes
+** Entropía del software
+*** Medida del desorden y complejidad
+** Ingeniería inversa
+*** Obtener una representación a un nivel superior de abstracción a partir del código
+*** Tipos: recuperación de documentación, extracción de modelos, ingeniería inversa de datos
+** Ingeniería hacia adelante (directa/reestructuración)
+*** Desarrollo desde un alto nivel de abstracción hasta la implementación física del sistema
+** Reingeniería
+*** Modificación de un sistema para ser reconstruido de una forma nueva
+*** Tipos:
+**** Reestructuración/refactoring: transformación en el mismo nivel de abstracción, sin modificar el comportamiento externo
+**** Migración de plataforma: cambio de entorno tecnológico
+**** Traducción de lenguajes: cambio de lenguaje de programación
+** Tipos de migración de aplicaciones
+*** Refronting/refacing: solo interfaz gráfica
+*** Rehosting (lift & shift): mover a nuevo entorno sin cambiar código
+*** Rearchitecting: reescritura con nuevos paradigmas
+*** Replacement: sustitución completa
+*** Retirada: eliminación del sistema
+*** Wrapping/interoperation: encapsular para uso en sistemas modernos
+*** Retain: no migrar (mantener legacy)
+*** Migración a la nube
+@endmindmap
+
+

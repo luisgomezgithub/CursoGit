@@ -1,0 +1,41 @@
+@startuml
+title Plataformas de Desarrollo Colaborativo y CI/CD
+
+start
+
+:Forjas de desarrollo colaborativo;
+split
+  :GitHub;
+split again
+  :GitLab;
+split again
+  :Bitbucket;
+split again
+  :Forja CTT3;
+end split
+
+:Funcionalidades comunes;
+:Control de versiones, Wiki, Issues, Releases, Colaboración;
+
+:Conceptos DevOps;
+split
+  :CI (Integración Continua);
+  note right
+    Automatiza integración de cambios y pruebas frecuentes.
+  end note
+split again
+  :CD (Entrega Continua);
+  note right
+    Automatiza la entrega en entornos de pruebas/aceptación.
+  end note
+split again
+  :CD (Despliegue Continuo);
+  note right
+    Automatiza el paso a producción, sin intervención manual.
+  end note
+end split
+
+:CI/CD = Automatización completa del ciclo de integración y entrega/despliegue;
+
+stop
+@enduml

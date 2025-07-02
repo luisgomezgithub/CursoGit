@@ -1,0 +1,21 @@
+@startuml
+title Flujo básico de archivos en Git
+left to right direction
+
+state Working_Directory {
+  [*] --> Modificado : Modificar archivo
+  Modificado --> Staging_Area : git add
+}
+
+state Staging_Area {
+  [*] --> Preparado : git add
+  Preparado --> Repository : git commit
+}
+
+state Repository as "Repositorio local (.git)" {
+  [*] --> Confirmado : git commit
+}
+
+Repository --> Working_Directory : git checkout (restaurar versión anterior)
+
+@enduml

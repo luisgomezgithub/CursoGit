@@ -1,0 +1,28 @@
+@startuml
+title Diferencia entre git fetch y git pull
+
+actor Usuario
+
+participant "Repositorio local" as Local
+participant "Repositorio remoto" as Remoto
+
+== git fetch ==
+Usuario -> Local: git fetch origin
+Local -> Remoto: Solicita cambios
+Remoto --> Local: Envía commits y refs actualizados
+Local -> Usuario: Actualiza ramas remotas (origin/main),\npero NO cambia archivos de trabajo
+
+== git pull ==
+Usuario -> Local: git pull origin main
+Local -> Remoto: Solicita cambios
+Remoto --> Local: Envía commits y refs actualizados
+Local -> Local: Fusiona (merge) cambios en rama actual
+Local -> Usuario: Actualiza archivos de trabajo y HEAD
+
+note right of Local
+git pull = git fetch + git merge
+git fetch solo actualiza referencias remotas
+git pull actualiza también tu directorio de trabajo
+end note
+
+@enduml

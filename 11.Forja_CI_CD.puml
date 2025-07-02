@@ -1,5 +1,21 @@
-@startuml
-title Plataformas de Desarrollo Colaborativo y CI/CD
+@startuml scale=2.5
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 23
+
+<style>
+	legend {
+		FontSize 27
+		FontName Arial
+		FontColor black
+	}
+    arrow {
+        LineStyle 4
+        LineThickness 0.5
+        LineColor green
+	}
+</style>
+
+title <size:27>Plataformas de Desarrollo Colaborativo y CI/CD
 
 start
 
@@ -38,4 +54,30 @@ end split
 :CI/CD = Automatización completa del ciclo de integración y entrega/despliegue;
 
 stop
+
+legend left
+
+GitHub es una plataforma de alojamiento y colaboración para proyectos que usan Git, mientras que Git es un sistema de control de versiones distribuido (SCV)
+
+<back:BUSINESS><color black><size:27>**GitHub:** 
+- Plataforma de repositorios Git en la nube, muy popular en la comunidad open source.
+- Interfaz sencilla y amigable.
+- Gran ecosistema de integraciones externas (GitHub Marketplace).
+- CI/CD disponible con GitHub Actions, pero menos integrado que en GitLab.
+- Opción de autoalojamiento solo en planes Enterprise.
+- Repositorios privados gratuitos en planes recientes.
+- Ideal para colaboración pública y visibilidad de proyectos.
+
+<back:LightBlue><color black><size:27>**GitLab:**
+- Plataforma DevOps integral, con enfoque en automatización y ciclo de vida completo del software.
+- CI/CD integrado de forma nativa, fácil de configurar y muy potente.
+- Permite autoalojamiento gratuito (self-hosted) y en la nube.
+- Herramientas avanzadas de seguridad y gestión de proyectos incluidas.
+- Permisos de acceso y roles más granulares.
+- Menor comunidad open source, pero más orientado a equipos DevOps y empresas.
+- Ideal para empresas que buscan control total y automatización completa.
+
+<back:lightgreen><color darkblue><size:27>**Bitbucket:** Integración nativa con Jira y Trello, pipelines CI/CD.
+
+endlegend
 @enduml

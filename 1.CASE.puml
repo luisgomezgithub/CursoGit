@@ -1,0 +1,19 @@
+@startmindmap
+* Herramientas CASE
+** Definición
+*** Software que automatiza y da soporte a las actividades del proceso de desarrollo de software
+** Clasificación
+*** Upper CASE
+**** Planificación
+**** Análisis de requisitos
+**** Estrategia de desarrollo
+*** Middle CASE
+**** Análisis
+**** Diseño
+*** Lower CASE
+**** Diseño detallado
+**** Implementación
+**** Pruebas
+*** Integrated CASE
+**** Todas las fases del ciclo de vida
+@endmindmap

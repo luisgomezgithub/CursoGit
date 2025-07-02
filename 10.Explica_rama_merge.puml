@@ -1,0 +1,35 @@
+@startuml
+title Flujo de trabajo: ramas y merge en Git
+
+actor Usuario
+
+participant "Rama main" as Main
+participant "Rama nuevo-diagrama" as NuevaRama
+participant "Repositorio Git" as Git
+
+== Preparación en main ==
+Usuario -> Main: git status
+Main -> Usuario: Verifica estado del repositorio
+Usuario -> Main: git add 9.Conceptos_GIT.puml
+Usuario -> Main: git commit -m "Versión original del diagrama"
+Main -> Git: Commit guardado en main
+
+== Crear y cambiar a nueva rama ==
+Usuario -> Git: git checkout -b nuevo-diagrama
+Git -> NuevaRama: Crea y cambia a la nueva rama
+
+== Crear o modificar archivo en la nueva rama ==
+Usuario -> NuevaRama: Edita 10.Explica_rama_merge_Diagrama.puml
+Usuario -> NuevaRama: git add 10.Explica_rama_merge_Diagrama.puml
+Usuario -> NuevaRama: git commit -m "Añadir diagrama de ramas y merge"
+NuevaRama -> Git: Commit guardado en nuevo-diagrama
+
+== Volver a main y fusionar ==
+Usuario -> Main: git checkout main
+Usuario -> Main: git merge nuevo-diagrama
+Main -> Git: Fusiona cambios de nuevo-diagrama en main
+
+== Resultado ==
+Git -> Main: main contiene ambos diagramas
+
+@enduml

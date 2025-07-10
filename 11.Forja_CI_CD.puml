@@ -27,7 +27,7 @@ split again
 split again
   :Bitbucket;
 split again
-  :Forja CTT3;
+  :Forja CTT;
 end split
 
 :Funcionalidades comunes;
@@ -71,13 +71,19 @@ GitHub es una plataforma de alojamiento y colaboración para proyectos que usan 
 <back:LightBlue><color black><size:27>**GitLab:**
 - Plataforma DevOps integral, con enfoque en automatización y ciclo de vida completo del software.
 - CI/CD integrado de forma nativa, fácil de configurar y muy potente.
-- Permite autoalojamiento gratuito (self-hosted) y en la nube.
+
+- Permite autoalojamiento gratuito **(self-hosted, on-premise)** y en la nube.
+
 - Herramientas avanzadas de seguridad y gestión de proyectos incluidas.
 - Permisos de acceso y roles más granulares.
 - Menor comunidad open source, pero más orientado a equipos DevOps y empresas.
 - Ideal para empresas que buscan control total y automatización completa.
 
-<back:lightgreen><color darkblue><size:27>**Bitbucket:** Integración nativa con Jira y Trello, pipelines CI/CD.
+<back:lightgreen><color darkblue><size:27>**Bitbucket:** almacenamiento, colaboración código e Integración nativa con Jira y Trello, pipelines CI/CD.
 
+
+Forja CTT: Administraciones Publicas. Acceso privado.
+ - Se publican los desarrollos, para su reutilización por otras Administraciones.
+ - Y antes de desarrollar  comprueba si existe componentes o SW que pueda reutilizar en CTT
 endlegend
 @enduml

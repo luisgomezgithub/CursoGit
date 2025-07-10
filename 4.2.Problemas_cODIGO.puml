@@ -1,4 +1,5 @@
 @startuml
+scale 2.4
 skinparam class {
     BackgroundColor<<espagueti>> #f8c471
     BackgroundColor<<ravioli>> #aed6f1
@@ -39,6 +40,10 @@ class "Problemas POA" <<poa>> {
     - Tangled code: código enmarañado
 }
 
+note bottom of "Problemas POA"
+Programación Orientada a Aspectos
+end note
+
 class "Code smell" <<smell>> {
     - Código mal diseñado, candidato a refactorización
     --
@@ -49,7 +54,7 @@ class "Code smell" <<smell>> {
     - Complejidad por mal uso de patrones
 }
 
-note right of "Code smell"
+note bottom of "Code smell"
 Herramienta: SonarQube ayuda a detectar estos problemas.
 end note
 
@@ -82,60 +87,6 @@ class "Patrones de diseño" <<patrones>> {
     - Estructurales
     - Comportamiento
 }
-
-class "Estándares y convenciones" <<estandares>> {
-    - Nomenclatura consistente
-    - Guías de estilo
-    - Formateo de código
-}
-
-class "Documentación del código" <<documentacion>> {
-    - Comentarios descriptivos
-    - Documentación API
-    - Javadoc/JSDoc/etc.
-}
-
-class "Análisis estático de calidad" <<analisis>> {
-    - SonarQube
-    - Métricas de calidad
-    - Detección temprana
-}
-
-note right of "Principios SOLID"
-Los principios SOLID son fundamentales
-para crear código mantenible y extensible
-end note
-
-note bottom of "Análisis estático de calidad"
-SonarQube permite detectar code smells
-y problemas de calidad de forma automatizada
-end note
-
-@enduml
-
-@startuml
-skinparam class {
-    BackgroundColor<<solid>> #a8d08d
-    BackgroundColor<<patrones>> #8dd1c9
-    BackgroundColor<<estandares>> #9cc4e4
-    BackgroundColor<<documentacion>> #b3c6e7
-    BackgroundColor<<analisis>> #c5e0b4
-    BorderColor Black
-}
-
-class "Principios SOLID" <<solid>> {
-    - S: Responsabilidad única
-    - O: Abierto/cerrado
-    - L: Sustitución de Liskov
-    - I: Segregación de interfaces
-    - D: Inversión de dependencias
-}
-
-class "Patrones de diseño" <<patrones>> {
-    - Creacionales
-    - Estructurales
-    - Comportamiento
-}
 class "Estándares y convenciones" <<estandares>> {
     - Nomenclatura consistente
     - Guías de estilo
@@ -152,7 +103,7 @@ class "Análisis estático de calidad" <<analisis>> {
     - Detección temprana
 }
 
-note right of "Principios SOLID"
+note bottom of "Principios SOLID"
 Los principios SOLID son buenas prácticas para crear
 código mantenible, flexible y escalable.
 end note
@@ -163,7 +114,8 @@ y problemas de calidad de forma automatizada.
 end note
 
 legend left
-Principios SOLID:
+<color darkblue>**Principios SOLID:**
+
 S (Single Responsibility): Una clase debe tener una única razón para cambiar.
 O (Open/Closed): Abierto para extensión, cerrado para modificación.
 L (Liskov Substitution): Las subclases deben poder sustituir a la clase base sin alterar el sistema.

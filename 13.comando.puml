@@ -1,0 +1,107 @@
+@startuml
+<style>
+	note {
+		HorizontalAlignment center
+		MaximumWidth 600
+        BackgroundColor lightyellow
+	}
+    arrow {
+        LineStyle 0
+        LineThickness 1
+        LineColor green
+	}
+</style>
+
+title Comandos Git que debo recordar
+
+start
+:git status;
+note right: Ver el estado de los archivos
+:git add archivo.txt;
+note right: Añadir archivo al staging
+:git commit -a -m "mensaje";
+note right: Añade **automáticamente** al área de preparación (staging area) todos los archivos que ya están siendo rastreados por Git (tracked) y que han sido modificados o eliminados.  
+-m "mensaje": Usa el mensaje especificado para el commit.
+:git checkout -b nueva-rama;
+note right
+  **Crear y cambiar a una nueva rama local**
+
+  - `-b` significa "branch": crea y cambia a una nueva rama en un solo paso.
+  - `git checkout` también sirve para:
+    - Cambiar de rama existente
+    - Restaurar archivos desde el commit actual (`HEAD`) si no se indica otra referencia.  
+      Ejemplo: `git checkout -- archivo.txt` restaura el archivo desde `HEAD`[6].
+    - Si se indica un commit, restaura desde ese commit.
+  - **Relación con `git branch`:**
+    - `git branch` crea, lista o elimina ramas, pero no cambia de rama.
+    - `git checkout` sí cambia de rama y puede crearla y cambiar a ella con `-b`.
+end note
+:git push -u origin nueva-rama;
+note right
+  **Subir la nueva rama al remoto**
+
+  - `-u` (o `--set-upstream`): Asocia la rama local con la remota, facilitando futuros `push` y `pull` sin especificar rama.
+end note
+:git branch -d nombre_rama;
+note right
+  **Borrar una rama local**
+
+  - `-d` elimina la rama solo si está fusionada.
+  - `-D` (mayúscula) fuerza el borrado aunque no esté fusionada.
+  - Solo afecta tu repositorio local; los commits permanecen hasta limpieza interna.
+end note
+:git push origin --delete nombre_rama;
+note right
+  **Borrar una rama remota**
+
+  - Elimina la rama del repositorio remoto para todos los colaboradores.
+end note
+stop
+
+legend left
+  **Sobre el uso de `--` en comandos Git:**
+  El doble guion (`--`) se utiliza para indicar que lo que sigue son archivos y no ramas, etiquetas o commits.
+  Es recomendable usarlo en comandos como `checkout`, `reset`, `restore` y `diff` para evitar ambigüedades si el nombre puede coincidir con una referencia.
+endlegend
+@enduml
+
+@startuml
+title Recuperación de un archivo eliminado en Git
+
+start
+
+:Eliminas un archivo localmente;
+
+if (¿Has hecho commit\nde la eliminación?) then (No)
+  :Puedes restaurar el archivo\ndesde el último commit local;
+  :Comando:\ngit restore nombre_del_archivo;
+  note right
+    Esto recupera el archivo
+    desde el historial local,
+    sin conectarse al remoto.
+  end note
+  stop
+else (Sí)
+  :El archivo ya no está\nen el último commit local;
+  :¿Existe el archivo en la rama remota?;
+  if (Sí)
+    :Recupera el archivo desde\nla rama remota actualizada;
+    :Comando: git fetch
+    :Comando: git checkout origin/main -- nombre_del_archivo;
+    note right
+      git fetch actualiza
+      la información de ramas remotas.
+      git checkout origin/main -- nombre_del_archivo
+      recupera el archivo desde el remoto.
+    end note
+    stop
+  else (No)
+    :Busca el commit donde existía el archivo;
+    :Comando: git log -- nombre_del_archivo;
+    :Recupera el archivo desde ese commit;
+    :Comando: git checkout <commit_hash> -- nombre_del_archivo;
+    stop
+  endif
+endif
+
+@enduml

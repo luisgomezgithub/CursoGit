@@ -1,27 +1,147 @@
 @startuml
-title Flujo básico de archivos en Git
+skinparam legendBackgroundColor #FFFACD  
+skinparam legendBorderColor none  
+
+title Flujo básico de archivos en Git - Estados de Flujo (3)
 left to right direction
 
-state Working_Directory {
+state Working_Directory  #lightyellow {
   [*] --> Modificado : Modificar archivo
   Modificado --> Staging_Area : git add
 }
 
-state Staging_Area {
-  [*] --> Preparado : git add
+state Staging_Area #lightblue {
+  [*] --> Preparado #LightCyan : git add
   Preparado --> Repository : git commit
 }
 
-state Repository as "Repositorio local (.git)" {
+state Repository as "Repositorio local (.git)" #palegreen {
   [*] --> Confirmado : git commit
 }
 
 Repository --> Working_Directory : git checkout (restaurar versión anterior)
 
+legend
+
+Untracked (sin rastrear): Solo en el working directory, Git no lo sigue.
+Tracked (rastreado): Puede estar en cualquiera de los estados del flujo (modificado, staged, committed)
+
+"Rastreado/sin rastrear" es una clasificación sobre si Git sigue o no un archivo.
+Los estados "working directory", "staging area" y "repository" describen dónde está el archivo en el flujo de control de versiones.
+
+end legend
+
 @enduml
 
 @startuml
-title Flujo de trabajo básico en Git
+skinparam legendBackgroundColor #FFFACD  
+skinparam legendBorderColor none  
+
+title Flujo básico de archivos en Git - Estados de Flujo (3)
+left to right direction
+
+state Working_Directory  #lightyellow {
+  [*] --> Modificado : Modificar archivo
+  'Modificado --> Staging_Area : git add
+}
+
+state Staging_Area #LightPink {
+  [*] --> Preparado #LightCyan : git add
+  'Preparado --> Repository : git commit
+}
+
+state Repository as "Repositorio local (.git)" #palegreen {
+  [*] --> Confirmado : git commit
+}
+
+Modificado --> Preparado : git add
+Preparado --> Confirmado : git commit
+
+Repository -[#blue,dashed]-> Working_Directory : git checkout (restaurar versión anterior)
+
+' Flechas rojas para git reset --hard
+Modificado <-[#red,dashed]- Confirmado : git reset --hard (descarta cambios)
+Preparado <-[#red,dashed]- Confirmado : \n \n git reset --hard)
+
+note right of Confirmado #FFCCCC
+  ⚠️ **git reset --hard**:
+  Elimina todos los cambios no confirmados, tanto en el área de staging como en el directorio de trabajo.
+  Solo lo que está en el repositorio local (commits confirmados) permanece.
+end note
+
+legend
+
+Untracked (sin rastrear): Solo en el working directory, Git no lo sigue.
+Tracked (rastreado): Puede estar en cualquiera de los estados del flujo (modificado, staged, committed)
+
+"Rastreado/sin rastrear" es una clasificación sobre si Git sigue o no un archivo.
+Los estados "working directory", "staging area" y "repository" describen dónde está el archivo en el flujo de control de versiones.
+
+end legend
+
+@enduml
+
+
+@startuml
+scale 0.9
+title Estados de archivos en Git
+
+[*] --> Untracked : Archivo nuevo\n(no rastreado)
+
+state Untracked #lightcoral {
+}
+
+Untracked --> Tracked_Unstaged : git add
+Tracked_Unstaged --> Staged : git add
+Staged --> Committed : git commit
+Committed --> Tracked_Unstaged : Modificar archivo
+Tracked_Unstaged --> Staged : git add
+Tracked_Unstaged --> Untracked : git rm --cached
+
+state Tracked_Unstaged as "Tracked\n(Modificado, no preparado)" #lightgoldenrodyellow {
+}
+state Staged #lightblue {
+}
+state Committed #palegreen {
+}
+
+legend
+Untracked (Sin rastrear, rojo claro): Archivos que existen en el directorio de trabajo pero Git no los sigue.
+Tracked (Modificado, no preparado) (amarillo claro): Archivos que Git rastrea pero que han sido modificados y aún no están preparados para commit.
+Staged (Azul claro): Archivos preparados para ser confirmados (commit).
+Committed (Verde claro): Archivos confirmados en el repositorio local.
+
+**Transiciones clave:**
+
+git add mueve archivos de untracked a tracked, y de tracked a staged.
+git commit pasa archivos de staged a committed.
+Modificar un archivo confirmado lo lleva a tracked (modificado).
+git rm --cached puede devolver un archivo tracked a untracked.
+end legend
+@enduml
+
+@startuml
+title Flujo de modificación y sincronización en Git
+
+start
+:Archivo confirmado en repositorio local;
+:Modificas el archivo;
+:git status (detecta archivo modificado);
+:git add archivo;
+:git commit -m "Nuevo cambio";
+:git push (sube al remoto);
+stop
+
+legend bottom
+- Cada vez que modificas un archivo confirmado, vuelve al flujo de trabajo local.
+- Debes añadirlo y confirmarlo de nuevo para guardar los cambios.
+- `git push` es necesario para sincronizar el repositorio local con el remoto.
+endlegend
+@enduml
+
+
+@startuml
+title Flujo de trabajo básico en Git 
 
 start
 :Modificar archivos en el

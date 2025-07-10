@@ -30,4 +30,70 @@
 *** Migración a la nube
 @endmindmap
 
+@startmindmap
+skinparam maxMessageSize 100
+skinparam maxWidth 180
+skinparam defaultFontSize 12
+left to right direction
+
+* Mantenimiento del software, ingeniería inversa y reingeniería
+** Tipos de mantenimiento (Métrica v3)
+*** <color Red>Correctivo: corregir errores
+***_ Adaptativo: cambios por entorno
+*** <color Red>Evolutivo: nuevas necesidades usuario
+***_ Perfectivo: mejora calidad interna
+***[#HoneyDew] <u>Preventivo</u>: <i>detectar/corregir fallos latentes
+** <color Purple>**Entropía del software**
+***_ Medida del desorden y complejidad
+
+Legend
+Metrica mete el Preventivo (reestructuración código, aplicando patrones de diseño) >> Perfectivo
+end legend
+@endmindmap
+
+@startmindmap
+skinparam maxMessageSize 100
+skinparam maxWidth 180
+skinparam defaultFontSize 12
+left to right direction
+
+<style>
+	rootNode {
+	HorizontalAlignment center
+	}
+    :depth(1) {
+	HorizontalAlignment center
+	}
+</style>
+
+* Mantenimiento del software, ingeniería inversa y reingeniería \n necesarios en sistemas heredados legacy system \n o en sistemas nuevos para mejorar rendimiento \n o establecer un diseño diferente
+** Ingeniería inversa \n     <back:lightgreen><color darkblue>ASCIENDO
+*** Obtener una representación a un nivel superior de abstracción a partir del código
+***_ Algo que es poco abstracto a un nivel superior de abstraccion
+***_ Tipos: <color darkblue>recuperación de documentación, extracción de modelos, ingeniería inversa de datos
+** Ingeniería hacia adelante (o directa) \n                 <back:lightgreen><color darkblue>DESCIENDO
+***_ Desarrollo desde un <color SaddleBrown>**alto nivel** de abstracción hasta la implementación física del sistema
+***_ Ingeniería Normal. .
+** Reingeniería\n <color darkblue>**SUBO <<>> BAJO**
+*** Modificación de un sistema para ser reconstruido de una forma nueva
+***_ Tipos:
+**** <color darkblue>**Reestructuración o Refactoring**: \nTransformación en el <back:lightgreen><color darkblue>mismo nivel</back> de abstracción, sin modificar el comportamiento externo
+**** Migración de plataforma: cambio de entorno tecnológico
+**** Traducción de lenguajes: cambio de lenguaje de programación
+** Tipos de migración de aplicaciones
+*** Refronting o Refacing: solo interfaz gráfica
+*** Rehosting (lift & shift): mover a nuevo entorno sin cambiar código
+***[#SandyBrown] Rearchitecting: reescritura con nuevos paradigmas
+*** Replacement: sustitución <color DarkOliveGreen>**completa**
+*** Retirada: eliminación del sistema
+***[#Lavender] Wrapping p Interoperation: encapsular para uso en sistemas modernos
+*** Retain: no migrar (mantener legacy)
+***[#LightSkyBlue] Migración a la nube
+@endmindmap
+
+
+
+
+
+
 

@@ -1,11 +1,61 @@
-@startwbs scale=2.5
-skinparam defaultFontName "Arial"
-skinparam defaultFontSize 28
+@startwbs
+scale 2.5
+
+<style>
+wbsDiagram {
+  node {
+    FontName "Arial"
+    FontSize 24
+    FontColor #263238
+    BackGroundColor #FAFAFA
+    LineColor #B0BEC5
+    LineThickness 1.2
+    Padding 12
+    Margin 6
+    MaximumWidth 260
+    HorizontalAlignment center
+  }
+  rootNode {
+    FontSize 32
+    FontColor #FFFFFF
+    BackGroundColor #1976D2
+    LineColor #1565C0
+    Padding 18
+    Margin 10
+  }
+  depth1 {
+    BackGroundColor #BBDEFB
+    FontColor #0D47A1
+    FontSize 28
+    LineColor #1976D2
+    HorizontalAlignment center
+  }
+  depth2 {
+    BackGroundColor #E3F2FD
+    FontColor #1976D2
+    FontSize 22
+    LineColor #90CAF9
+    HorizontalAlignment center
+  }
+  leafNode {
+    BackGroundColor #FFFFFF
+    FontColor #263238
+    FontSize 20
+    LineColor #B0BEC5
+    HorizontalAlignment center
+  }
+  legend {
+		FontSize 19
+		BackgroundColor lightyellow
+        LineColor white
+	}
+}
+</style>
 
 * Métrica v3
 ** Planificación de Sistemas de Información (PSI)
 *** Marco estratégico, arquitectura de información, plan de proyectos
-** Desarrollo de Sistemas de Información
+** Desarrollo de Sistemas de Información \n **(5)**
 *** Estudio de Viabilidad del Sistema (EVS): análisis de necesidades y viabilidad
 *** Análisis del Sistema de Información (ASI): especificación detallada y modelos
 *** Diseño del Sistema de Información (DSI): arquitectura, especificaciones técnicas, plan de pruebas
@@ -14,65 +64,19 @@ skinparam defaultFontSize 28
 ** Mantenimiento de Sistemas de Información (MSI)
 *** Correctivo
 *** Evolutivo
-** Interfaces organizativas y de soporte
+** Interfaces organizativas (soporte)
 *** Gestión de Proyectos (GP): planificación, seguimiento y control
 *** Seguridad (SEG): gestión de riesgos lógicos
 *** Gestión de la Configuración (GC): control de cambios y versiones
 *** Aseguramiento de la Calidad (CAL): garantía de calidad
+
+legend
+Enfoque orientado al Proceso.
+Metodología descompone cada proceso en Actividades, y estas a su vez en tareas.
+Formado por 3 procesos principales, y un conjunto de Interfaces.
+end legend
 @endwbs
 
-@startuml
-skinparam class {
-    BackgroundColor<<proceso>> #aed6f1
-    BackgroundColor<<interfaz>> #f9e79f
-    BorderColor Black
-}
-
-class "Métrica v3" as Met
-
-class "Planificación de Sistemas de Información (PSI)" <<proceso>> {
-    Marco estratégico, arquitectura de información, plan de proyectos
-}
-class "Desarrollo de Sistemas de Información" <<proceso>>
-class "Mantenimiento de Sistemas de Información (MSI)" <<proceso>> {
-    - Correctivo
-    - Evolutivo
-}
-
-class "Estudio de Viabilidad del Sistema (EVS)" <<proceso>>
-class "Análisis del Sistema de Información (ASI)" <<proceso>>
-class "Diseño del Sistema de Información (DSI)" <<proceso>>
-class "Construcción del Sistema de Información (CSI)" <<proceso>>
-class "Implantación y Aceptación del Sistema (IAS)" <<proceso>>
-
-class "Gestión de Proyectos (GP)" <<interfaz>> {
-    Planificación, seguimiento y control
-}
-class "Seguridad (SEG)" <<interfaz>> {
-    Gestión de riesgos lógicos
-}
-class "Gestión de la Configuración (GC)" <<interfaz>> {
-    Control de cambios y versiones
-}
-class "Aseguramiento de la Calidad (CAL)" <<interfaz>> {
-    Garantía de calidad
-}
-
-Met -- "Planificación de Sistemas de Información (PSI)"
-Met -- "Desarrollo de Sistemas de Información"
-Met -- "Mantenimiento de Sistemas de Información (MSI)"
-Met .. "Gestión de Proyectos (GP)"
-Met .. "Seguridad (SEG)"
-Met .. "Gestión de la Configuración (GC)"
-Met .. "Aseguramiento de la Calidad (CAL)"
-
-"Desarrollo de Sistemas de Información" -- "Estudio de Viabilidad del Sistema (EVS)"
-"Desarrollo de Sistemas de Información" -- "Análisis del Sistema de Información (ASI)"
-"Desarrollo de Sistemas de Información" -- "Diseño del Sistema de Información (DSI)"
-"Desarrollo de Sistemas de Información" -- "Construcción del Sistema de Información (CSI)"
-"Desarrollo de Sistemas de Información" -- "Implantación y Aceptación del Sistema (IAS)"
-
-@enduml
 
 @startuml
 skinparam class {
@@ -141,5 +145,47 @@ Met .. "Gestión de Proyectos (GP)"
 Met .. "Seguridad (SEG)"
 Met .. "Gestión de la Configuración (GC)"
 Met .. "Aseguramiento de la Calidad (CAL)"
+
+@enduml
+
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam dpi 150
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+
+title Vigencia y Regulación de Certificados Electrónicos (Ley 6/2020)
+
+start
+
+:Certificados electrónicos;
+note right
+- Vigencia máxima: 5 años
+- Renovación encadenada solo 1 vez
+end note
+
+if (Autoridad de Certificación decide vigencia?) then (Sí)
+  :Determina vigencia concreta;
+else (No)
+  :Se aplica máximo 5 años;
+endif
+
+partition DNI_electronico {
+  :Certificados DNIe;
+  note right
+  - Vigencia: 2 años
+  - Renovación según organismo emisor
+  - Equilibrio seguridad/usabilidad
+  end note
+}
+
+:Revocación y suspensión;
+note right
+- Por incumplimiento o riesgos
+- Reguladas en Ley 6/2020
+end note
+
+stop
 
 @enduml

@@ -1,0 +1,71 @@
+cd /c/xaMPP/htdocs/Diagramas_PlantUML/Metodologia_Versiones_Git
+git remote add origin https://github.com/luisgomezgithub/CursoGit
+git remote -v
+
+
+@startuml
+start
+:Editas archivos en tu carpeta de proyecto;
+:git status;
+:git add . (añades cambios al staging area);
+:git commit -m "mensaje" (guardas en el repositorio local);
+:git push (subes al repositorio remoto en GitHub);
+stop
+
+legend bottom
+- El directorio de trabajo es donde editas archivos.
+- El área de staging (índice) es donde preparas los cambios antes del commit.
+- El repositorio local (carpeta .git) guarda todo el historial y configuración.
+- El repositorio remoto (GitHub) es la copia online para compartir y colaborar.
+endlegend
+@enduml
+
+@startuml
+:Directorio de Trabajo;
+:git add;
+:Área de Preparación (Staging Area);
+:git commit;
+:Repositorio Local (.git);
+:git push;
+:Repositorio Remoto (GitHub, GitLab, etc.);
+:git pull;
+@enduml
+
+@startuml
+skinparam rectangle {
+  BackgroundColor #F0F8FF
+  BorderColor #4682B4
+  RoundCorner 15
+  FontSize 14
+  FontName Arial
+}
+
+actor "Desarrollador" as Dev
+
+rectangle "Repositorio Remoto\n(origin/main, origin/feature...)" as Remote
+rectangle "Repositorio Local\n(main, feature...)" as Local
+
+Dev --> Local : Trabaja en ramas locales
+
+Remote -down-> Local : git fetch
+note right: Descarga cambios remotos\nNO los fusiona automáticamente
+
+Local -down-> Local : git merge origin/main
+note right: Fusiona manualmente los cambios\nremotos en la rama local
+
+Remote -down-> Local : git pull
+note left: Equivale a\nfetch + merge\ny fusiona automáticamente
+
+Local -right-> Remote : git push
+note right: Sube cambios locales\nal remoto
+
+legend bottom
+- `git fetch` descarga cambios remotos, pero NO los fusiona.
+- `git merge origin/<rama>` fusiona manualmente los cambios remotos en tu rama local.
+- `git pull` hace ambos pasos automáticamente: descarga y fusiona.
+- Puedes elegir en qué rama local fusionar los cambios remotos.
+- Para subir cambios, usa `git push` (local → remoto).
+endlegend
+@enduml
+
+

@@ -5,6 +5,9 @@ skinparam defaultFontSize 25
 skinparam classAttributeFontSize 16
 skinparam classFontSize 16
 
+skinparam legendBackgroundColor #FFFACD  
+skinparam legendBorderColor none 
+
 skinparam class {
     BackgroundColor<<tipo>> #aed6f1
     BorderColor Black
@@ -26,19 +29,22 @@ skinparam class {
 class "Pruebas de software" 
 
 class "Pruebas Unitarias" <<tipo>> {
-    - Caja blanca (estructura interna)
+    - Caja blanca \n(verifica estructura interna)
     - Caja negra (funcionalidad)
 }
 class "Pruebas de Integración" <<tipo>> {
+  --
+  Enfoques
     - Incremental (Top-Down, Bottom-Up, Combinadas)
     - No incremental (Big-Bang)
 }
+
 class "Pruebas del Sistema" <<tipo>> {
     - Funcionales
     - Comunicaciones
-    - Rendimiento
-    - Volumen
-    - Sobrecarga
+    - **Rendimiento**
+    - **Volumen**
+    - **Sobrecarga**
     - Disponibilidad de datos
     - Facilidad de uso
     - Operación
@@ -75,123 +81,134 @@ class "Otros tipos de pruebas" <<tipo>> {
 
 legend left
 Pruebas unitarias: Verifican cada componente individualmente.
-Pruebas de integración: Verifican el ensamblaje e interacción entre componentes.
-Pruebas del sistema: Evalúan el sistema globalmente frente a los requisitos.
+
+Pruebas de integración: Verifican el <color DarkBLue><i>**ensamblaje**</i></color> e interacción entre componentes. Comprobar que interactúan correctamente a través de sus interfaces.
+
+**Tipos de pruebas de integración:**
+
+- **Incremental:** Se integran los módulos poco a poco y se prueba tras cada integración.
+  - *Top-Down:* De arriba hacia abajo, comenzando por los módulos superiores (más cercanos al usuario)
+  - *Bottom-Up:* De abajo (más cercanos a la base de la arquitectura) hacia arriba, comenzando por los módulos básicos.
+  - *Combinadas/Sándwich:* Se combinan ambos enfoques.
+  
+  Ventajas: Permiten identificar errores de integración de manera localizada y progresiva, facilitando la depuración.
+
+- **No incremental (Big Bang):** Se integran y prueban todos los módulos a la vez. Si hay errores, es más difícil localizar su origen.
+
+  Desventajas: Si se detectan errores, es difícil identificar en qué módulo o interacción específica se encuentra el problema, lo que complica la depuración y puede retrasar el desarrollo
+
+<color darkblue>**Pruebas del sistema**: Evalúan el sistema <color Red>**globalmente**</color> frente a los requisitos.
 Pruebas de implantación: Comprueban el funcionamiento en el entorno real.
-Pruebas de aceptación: Validan que el sistema cumple las necesidades del usuario final (ALFA: en la organización desarrolladora; BETA: en el cliente).
+
+<color Orange>**Pruebas de aceptación**:</color> Validan que el sistema cumple las necesidades del usuario final (ALFA: en la organización desarrolladora; **BETA**: en el cliente).
 Pruebas de regresión: Aseguran que los cambios no introducen errores en componentes no modificados.
+
 Otros tipos: Humo (verificación básica), fuzzing (datos aleatorios), usabilidad (experiencia de usuario).
+
 endlegend
 @enduml
 
 @startuml
+skinparam classAttributeIconSize 0
+skinparam classFontSize 15
+skinparam classBackgroundColor #F8F8FF
+skinparam classBorderColor #7D7D7D
 skinparam defaultFontName "Arial"
-skinparam defaultFontSize 18
-skinparam classFontSize 18
 
-package "Pruebas unitarias" {
-  class "Mockito\n(Java)" as Mockito
-  class "xUnit\n(.NET)" as xUnit
-  class "TestNG\n(Java)" as TestNG
-  class "QUnit\n(JavaScript)" as QUnit
-  class "Jasmine\n(JavaScript)" as Jasmine
+class PruebasUnitarias {
+  +Mockito()
+  +xUnit()
+  +TestNG()
+  +QUnit()
+  +Jasmine()
 }
 
-package "Pruebas web" {
-  class "Selenium\n(Web)" as Selenium
-  class "Cypress\n(Web)" as Cypress
-  class "Badboy\n(Web)" as Badboy
+class PruebasWeb {
+  +Selenium()
+  +Cypress()
+  +Badboy()
 }
 
-package "Pruebas de rendimiento" {
-  class "JMeter\n(Java/Web)" as JMeter
+class PruebasRendimiento {
+  +JMeter()
 }
 
-package "Pruebas de servicios web" {
-  class "SoapUI\n(SOAP/REST)" as SoapUI
-  class "Postman\n(REST)" as Postman
+class PruebasServiciosWeb {
+  +SoapUI()
+  +Postman()
 }
 
-package "Pruebas móviles" {
-  class "Appium\n(Móvil)" as Appium
+class PruebasMoviles {
+  +Appium()
 }
 
-package "Pruebas de aceptación" {
-  class "FitNesse\n(Aceptación)" as FitNesse
+class PruebasAceptacion {
+  +FitNesse()
+  +EasyAccept()
 }
 
-' Si quieres mostrar relaciones, puedes conectar los paquetes a un nodo central:
-class "Herramientas de pruebas de software"
-"Herramientas de pruebas de software" -- Mockito
-"Herramientas de pruebas de software" -- xUnit
-"Herramientas de pruebas de software" -- TestNG
-"Herramientas de pruebas de software" -- QUnit
-"Herramientas de pruebas de software" -- Jasmine
-"Herramientas de pruebas de software" -- Selenium
-"Herramientas de pruebas de software" -- Cypress
-"Herramientas de pruebas de software" -- Badboy
-"Herramientas de pruebas de software" -- JMeter
-"Herramientas de pruebas de software" -- SoapUI
-"Herramientas de pruebas de software" -- Postman
-"Herramientas de pruebas de software" -- Appium
-"Herramientas de pruebas de software" -- FitNesse
+class AccesoBaseDatos {
+  +Cucumber()
+}
 
+' Opcional: Relacionar todas con una clase general
+class HerramientaPruebas
+
+PruebasUnitarias -- HerramientaPruebas
+PruebasWeb -- HerramientaPruebas
+PruebasRendimiento -- HerramientaPruebas
+PruebasServiciosWeb -- HerramientaPruebas
+PruebasMoviles -- HerramientaPruebas
+PruebasAceptacion -- HerramientaPruebas
+AccesoBaseDatos -- HerramientaPruebas
+
+legend bottom
+Badboy se usa para capturar la navegación del usuario. Usado con JMeter.
+endlegend
 @enduml
+
 
 @startuml
+skinparam classAttributeIconSize 0
+skinparam classFontSize 16
+skinparam classBackgroundColor #F8F8FF
+skinparam classBorderColor #7D7D7D
 skinparam defaultFontName "Arial"
-skinparam defaultFontSize 18
-skinparam classFontSize 18
 
-together {
-package "Pruebas unitarias" {
-  class "Mockito\n(Java)"
-  class "xUnit\n(NET)"
-  class "TestNG\n(Java)"
-  class "QUnit\n(JavaScript)"
-  class "Jasmine\n(JavaScript)"
-}
-package "Pruebas web" {
-  class "Selenium\n(Web)"
-  class "Cypress\n(Web)"
-  class "Badboy\n(Web)"
-}
-package "Pruebas de rendimiento" {
-  class "JMeter\n(Java/Web)"
-}
-package "Pruebas de servicios web" {
-  class "SoapUI\n(SOAP/REST)"
-  class "Postman\n(REST)"
-}
-package "Pruebas móviles" {
-  class "Appium\n(Móvil)"
-}
-package "Pruebas de aceptación" {
-  class "FitNesse\n(Aceptación)"
-}
+skinparam legendBackgroundColor #FFFACD  
+skinparam legendBorderColor none 
+
+class CajaBlanca #Bisque {
+  +deInterfaz()
+  +deEstructurasDeDatosLocales()
+  +deBuclesOCondicionesLimite()
+  +delCaminoBasico()
+  --
+  -coberturaDeSentencias()
+  -coberturaDeDecisiones()
 }
 
+class CajaNegra {
+  +particionesDeEquivalencia()
+  +analisisDeValoresLimite()
+  +valoresDeErrorOImposibles()
+  +tablaDeDecision()
+  +transicionDeEstado()
+  +casoDeUso()
+  +grafoCausaEfecto()
+  +pruebasDeComparacion()
+}
+
+CajaBlanca -- PruebaUnitaria
+CajaNegra -- PruebaUnitaria
+
+class PruebaUnitaria
+
+legend bottom
+**Caja blanca:** El evaluador conoce el código y verifica la lógica interna.
+**Caja negra:** El evaluador no conoce el código, prueba entradas y salidas según requisitos.
+endlegend
 @enduml
 
-@startmindmap
-* Herramientas de pruebas de software
-** Pruebas unitarias
-*** Mockito :: Java, mocking y pruebas unitarias
-*** xUnit :: .NET, framework de pruebas unitarias
-*** TestNG :: Java, inspirado en JUnit/NUnit
-*** QUnit :: JavaScript, pruebas unitarias
-*** Jasmine :: JavaScript, framework de pruebas unitarias
-** Pruebas web
-*** Selenium :: Automatización de pruebas para aplicaciones web
-*** Cypress :: Pruebas automáticas para aplicaciones web modernas
-*** Badboy :: Captura y reproducción de navegación web
-** Pruebas de rendimiento
-*** JMeter :: Java/web, pruebas de carga y rendimiento
-** Pruebas de servicios web
-*** SoapUI :: Pruebas para servicios SOAP y REST en Java
-*** Postman :: Pruebas y automatización de servicios RESTful
-** Pruebas móviles
-*** Appium :: Automatización de pruebas para apps móviles (iOS/Android)
-** Pruebas de aceptación
-*** FitNesse :: Pruebas de aceptación, integración y documentación ejecutable
-@endmindmap
+
+

@@ -1,7 +1,7 @@
 @startmindmap
 * Herramientas para el desarrollo software
 ** IDEs
-*** Eclipse
+***[#Silver] Eclipse
 **** Java (principal), C/C++, PHP, Python
 *** IntelliJ IDEA
 **** Java (principal), Kotlin, Groovy, Scala, JavaScript
@@ -10,47 +10,76 @@
 *** Visual Studio
 **** C#, .NET, C++, F#, Python, JavaScript
 *** Xcode
-**** Swift (principal), Objective-C, C, C++
+****_ Swift (principal), Objective-C, C, C++
 *** Android Studio
 **** Java, Kotlin (principal)
-** Control de versiones
+**[#HoneyDew] Control de versiones
 *** Git, GitHub, GitLab
-*** Bitbucket, FishEye
-** Análisis estático de código
-*** Linters
+*** <color OrangeRed>Bitbucket, FishEye
+**[#Orange] Análisis estático de código
+***[#E3F2FD] Linters 
 ****_ Detectan errores de sintaxis, violaciones de estilo y posibles problemas como variables no utilizadas.
-**** PMD (Java, JS, Kotlin, Swift…)
+**** PMD (Java, JS, Kotlin, Swif)
 *** Análisis de flujo de datos
 ****_ Detectar variables no inicializadas, condiciones de carrera y otros problemas
-*** Analizadores de seguridad (SAST)
-**** Inyección SQL, XSS…
-*** Análisis de librerías de terceros (SCA)
-**** Black Duck, VeraCode SCA, Snyk, Sonatype, WhiteSource, Retire.js, OWASP Dependency-Check
+*** Analizadores de seguridad **(SAST)**
+**** Inyección SQL, XSS
+*** Análisis de librerías de terceros <color DarkBlue>**(SCA)**
+**** Black Duck, VeraCode SCA, Snyk, Sonatype, WhiteSource, Retire.js
 *** Análisis de calidad de código
-**** SonarQube
+****[#LightCoral] SonarQube
 @endmindmap
 
 @startmindmap
+skinparam defaultFontSize 12
+<style>
+mindmapDiagram {
+  rootNode {
+    BackGroundColor #1976D2
+    FontColor white
+    FontSize 16
+    LineColor #1565C0
+  }
+  leafNode {
+    BackGroundColor #E3F2FD
+    FontColor #1976D2
+    FontSize 11
+    LineColor #90CAF9
+  }
+}
+</style>
+
+left to right direction
+
 * Herramientas para el desarrollo software
-** Herramientas de construcción (Build)
+** Herramientas de **construcción** (Build)
 *** Maven (Java)
 *** Gradle (Java, Kotlin, Groovy)
 *** Ant (Java)
-** Herramientas de testing
+** Herramientas automáticas de testing
 *** Unitarios: XUnit, JUnit, Unit.js
 *** Web: Selenium (automatización UI)
 *** Movil: Appium
-*** Servicios web: SoapUI y Postman (RESTful).
+*** Servicios web: SoapUI y Postman (RESTful)
 ** Herramientas de empaquetado
 *** Repositorio de artefactos: Nexus 3, Artifactory
 *** JAR/WAR (Java)
 *** NuGet (.NET)
 @endmindmap
 
-
 @startmindmap
+<style>
+mindmapDiagram {
+rootNode {
+    BackGroundColor #1976D2
+    FontColor white
+    FontSize 16
+    LineColor #1565C0
+  }
+}
+</style>
 * Herramientas para el desarrollo software
-** Gestión de la configuración
+** Gestión de la <color DarkGoldenRod>**configuración**
 *** Ansible, Puppet, Chef, SaltStack, Jenkins
 ** Despliegue
 *** Docker, Kubernetes, Jenkins, GitLab CI/CD, AWS CodeDeploy, Azure DevOps
@@ -59,6 +88,13 @@
 *** Rendimiento: Zabbix, Nagios, InfluxDB, Telegraf, Splunk, Prometheus, Grafana
 *** Logs: Elasticsearch, Logstash, Kibana (ELK)
 *** Analíticas web: Piwik PRO, Google Web Analytics
+
+legend bottom
+<color DarkBlue>**Desarrollo seguro: SAST, DAST, SCA**
+**DAST**: Dynamic Application Security Testing.  
+Pruebas dinámicas de seguridad que analizan aplicaciones en ejecución,  
+simulando ataques externos para detectar vulnerabilidades.
+endlegend
 @endmindmap
 
 @startmindmap

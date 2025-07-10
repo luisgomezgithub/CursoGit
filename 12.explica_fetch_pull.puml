@@ -26,3 +26,97 @@ git pull actualiza también tu directorio de trabajo
 end note
 
 @enduml
+
+@startuml
+title Diferencia entre git fetch y git pull
+
+actor Usuario
+
+participant "Repositorio local" as Local
+participant "Repositorio remoto" as Remoto
+
+== git fetch ==
+Usuario -> Local: git fetch origin
+Local -> Remoto: Solicita cambios
+Remoto --> Local: Envía commits y refs actualizados
+Local -> Usuario: Actualiza ramas remotas (origin/main),\nNO cambia archivos de trabajo ni HEAD
+
+note right of Local
+Los cambios descargados se almacenan en ramas remotas (origin/main) y en FETCH_HEAD.
+Tu rama local y tu directorio de trabajo no cambian.
+end note
+
+Usuario -> Local: git log main..origin/main
+Local -> Usuario: Muestra commits nuevos en remoto
+
+Usuario -> Local: git diff main..origin/main
+Local -> Usuario: Muestra diferencias de contenido
+
+Usuario -> Local: git merge origin/main (opcional)
+Local -> Usuario: Fusiona cambios remotos en tu rama local
+
+note right of Usuario
+Tras fetch, puedes:
+- Ver commits nuevos (`git log main..origin/main`)
+- Ver diferencias (`git diff main..origin/main`)
+- Decidir cuándo y cómo fusionar (`git merge origin/main`)
+end note
+
+== git pull ==
+Usuario -> Local: git pull origin main
+Local -> Remoto: Solicita cambios
+Remoto --> Local: Envía commits y refs actualizados
+Local -> Local: Fusiona (merge) cambios en rama actual
+Local -> Usuario: Actualiza archivos de trabajo y HEAD
+
+note right of Local
+git pull = git fetch + git merge
+git pull descarga y fusiona automáticamente los cambios en tu rama actual y tu directorio de trabajo.
+end note
+
+@enduml
+
+@startuml
+title Flujo de trabajo tras git fetch
+
+actor Usuario
+
+participant "Repositorio local (.git)" as Local
+participant "Repositorio remoto" as Remoto
+
+== Sincronización con git fetch ==
+Usuario -> Local: git fetch origin
+Local -> Remoto: Solicita actualizaciones
+Remoto --> Local: Envía nuevos commits, ramas y etiquetas
+Local -> Usuario: Actualiza referencias remotas (origin/x),\nNO crea ramas locales ni cambia el directorio de trabajo
+
+note right of Local
+- Los cambios descargados se almacenan en la base de datos interna de Git (.git).
+- Se actualizan las referencias remotas (origin/x).
+- No se crean ramas locales automáticamente.
+end note
+
+== Inspección de ramas remotas ==
+Usuario -> Local: git branch -r
+Local -> Usuario: Muestra ramas remotas disponibles\n(p.ej. origin/main, origin/x)
+
+Usuario -> Local: git log main..origin/main
+Local -> Usuario: Muestra commits nuevos en remoto
+
+Usuario -> Local: git diff main..origin/main
+Local -> Usuario: Muestra diferencias de contenido
+
+== Crear rama local desde rama remota (opcional) ==
+Usuario -> Local: git checkout -b x origin/x
+Local -> Usuario: Crea rama local x basada en origin/x
+
+== Fusionar cambios (opcional) ==
+Usuario -> Local: git merge origin/x
+Local -> Usuario: Fusiona cambios de origin/x en rama local x
+
+note right of Usuario
+- Puedes inspeccionar las ramas y commits remotos antes de crear ramas locales o fusionar.
+- Solo creas la rama local si decides trabajar en ella.
+end note
+
+@enduml

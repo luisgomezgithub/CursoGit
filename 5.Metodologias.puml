@@ -1,23 +1,50 @@
 @startmindmap
+scale 2.5
 * Metodologías de desarrollo software
 ** Tradicionales (formales/pesadas)
-*** Ejemplos: SSADM, Merise, Métrica v3
-** Orientadas a objetos
+*** Ejemplos: SSADM (Reino Unido), Merise (Francia), **Métrica v3**
+** <color darkblue>**Orientadas a objetos**
 *** Ejemplos: OMT, OOAD, OOSE, RUP/PUS
 **** RUP/PUS: 4 fases (iniciación, elaboración, construcción, transición)
-** Ágiles
-*** Ejemplos: Scrum, Kanban, XP, FDD, DDD
+**[#Lavender] Ágiles
+*** **Ejemplos**: <color darkblue>**Scrum, Kanban**, XP, FDD, DDD
 **** Scrum
-***** Roles: Product Owner, Scrum Master, Scrum Team, Developers
+*****[#Bisque] Roles: Product Owner, Scrum Master, Scrum Team, Developers
 ***** Reuniones: Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective
-***** Sprint: iteración de 2-4 semanas, backlog
+*****[#HoneyDew] Sprint: iteración de 2-4 semanas, backlog
 **** Kanban: flujo continuo, tablero To-Do/Doing/Done, JIT, detecta cuellos de botella
 **** XP: énfasis en adaptabilidad, historias de usuario, desarrollo iterativo
-** RAD (Rapid Application Development)
+** <color OrangeRed>**RAD** (Rapid Application Development)
 *** Desarrollo rápido de aplicaciones
+
+legend left
+<color darkblue>**Proceso XP (Extreme Programming):**
+
+1) El cliente define el valor de negocio a implementar.
+2) El programador estima el esfuerzo necesario para su implementación.
+3) El programador construye ese valor.
+4) Vuelve al paso 1.
+endlegend
+
 @endmindmap
 
 @startuml
+scale 2.5
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 26
+skinparam legendFontSize 28
+
+<style>
+	legend {
+        BackgroundColor lightyellow
+	}
+    arrow {
+        LineStyle 0
+        LineThickness 1
+        LineColor green
+	}
+</style>
+
 skinparam class {
     BackgroundColor<<trad>> #f9e79f
     BackgroundColor<<oo>> #aed6f1
@@ -40,7 +67,9 @@ class "Orientadas a objetos" <<oo>> {
 }
 class "Ágiles" <<agil>> {
     Ejemplos: Scrum, Kanban, XP, FDD, DDD
-    Foco: incremental, adaptabilidad, colaboración
+    Desarrollo: incremental, sencillo, adaptable, colaborativo
+    --
+    - **Foco** en el Cliente y en la entrega de Valor
 }
 class "RAD" <<rad>> {
     Desarrollo rápido de aplicaciones
@@ -67,13 +96,14 @@ MDS -- RAD
 Ágiles -- XP
 
 legend left
-Tradicionales: Basadas en fuerte planificación, documentación y procesos.
+**Tradicionales:** Basadas en fuerte planificación, documentación y procesos.
 RAD: Metodología orientada a entregar sistemas muy rápido.
 RUP/PUS: Proceso unificado en 4 fases: iniciación, elaboración, construcción, transición.
 
-Scrum: Metodología ágil con roles (Product Owner, Scrum Master, Equipo), iteraciones (sprints) y reuniones clave.
+Scrum: Metodología ágil con roles (Product Owner, Scrum Master, Scrum Team), iteraciones (sprints) y reuniones clave.
 
 Scrum: Metodología ágil con roles y eventos iterativos.
+
   - Product Owner: Voz del cliente, prioriza funcionalidades.
   - Scrum Master: Facilita Scrum, protege al equipo.
   - Scrum Team: Construye el producto, multifuncional y autoorganizado. Tamaño pequeño (de 5 a 9 personas).
@@ -81,9 +111,82 @@ Scrum: Metodología ágil con roles y eventos iterativos.
 
  Sprint: Iteración de 2-4 semanas donde se desarrolla un incremento de software operativo.
   - Backlog: Lista priorizada de requisitos y tareas pendientes; de aquí se seleccionan los ítems para cada sprint.
-  
+  - Backlog de iteracción seleccionado de del Backlog del Producto.
+
+  Sprint Review: al final del Sprint.Se verifica  verifica si el incremento de producto satisface las expectativas P Owner
+  Sprint Retrospective: no miramos en el SW  que hemos desarrolado.
+    Miramos en lo que usamos para  desarrollarlo que nos puede generar un problema. Miramos hacia Futuro.
+
 Kanban: Flujo continuo, tablero visual (To-Do, Doing, Done), principio JIT.
+
 XP: Énfasis en adaptabilidad, historias de usuario, desarrollo iterativo y cambios frecuentes.
 endlegend
 @enduml
 
+
+@startmindmap
+* Metodologías de desarrollo de software
+** Tradicionales
+*** Fuerte planificación, documentación, procesos
+*** RAD: entrega rápida de sistemas
+*** RUP/PUS: 4 fases (iniciación, elaboración, construcción, transición)
+** Ágiles
+*** Scrum
+**** Roles: Product Owner (prioriza), Scrum Master (facilita), Scrum Team (desarrolla, multifuncional, 5-9 personas), Developers (implementan)
+**** Sprint: iteración 2-4 semanas, incremento operativo
+**** Backlog: lista priorizada de requisitos
+**** Sprint Review: verifica satisfacción del Product Owner
+**** Sprint Retrospective: mejora del proceso, no del producto
+*** Kanban
+**** Flujo continuo, tablero visual (To-Do, Doing, Done), principio JIT
+*** XP (Extreme Programming)
+**** Adaptabilidad, historias de usuario, desarrollo iterativo, cambios frecuentes
+@endmindmap
+
+@startuml
+package "Metodologías Tradicionales" as T {
+  class "RAD" as RAD
+  class "RUP/PUS" as RUP
+}
+
+package "Metodologías Ágiles" as A {
+  package "Scrum" {
+    class "Roles" as Roles
+    class "Sprint"
+    class "Backlog"
+    class "Sprint Review"
+    class "Sprint Retrospective"
+  }
+  class "Kanban"
+  class "XP"
+}
+
+RAD : entrega rápida
+RUP : 4 fases: iniciación, elaboración, construcción, transición
+
+Roles : Product Owner, Scrum Master, Scrum Team, Developers
+Sprint : Iteración 2-4 semanas
+Backlog : Lista priorizada de requisitos
+"Sprint Review" : Verifica satisfacción del Product Owner
+"Sprint Retrospective" : Mejora del proceso
+
+Kanban : Flujo continuo, tablero visual, JIT
+XP : Adaptabilidad, historias de usuario, iterativo, cambios frecuentes
+
+T --down--> A
+
+@enduml
+
+
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 14
+start
+:Cliente define valor de negocio;
+:Programador estima esfuerzo;
+:Programador construye valor;
+repeat
+  :¿Nuevo valor a implementar?;
+repeat while (sí)
+stop
+@enduml
